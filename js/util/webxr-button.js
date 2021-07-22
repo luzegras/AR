@@ -60,9 +60,9 @@ const generateInnerHTML = (cssPrefix, height)=> {
   const logoHeight = height*_LOGO_SCALE;
   const svgString = generateXRIconString(cssPrefix, logoHeight) + generateNoXRIconString(cssPrefix, logoHeight);
 
-  return `<button class="${cssPrefix}-button">
-          <div class="${cssPrefix}-title"></div>
-          <div class="${cssPrefix}-logo" >${svgString}</div>
+  return `<button style=" display:table; margin: 0 auto;" class="${cssPrefix}-button">
+         <b> <div class="${cssPrefix}-title"></div></b>
+      
         </button>`;
 };
 
@@ -188,10 +188,10 @@ const generateCSS = (options, fontSize=18)=> {
     button.${cssPrefix}-button {
         font-family: 'Karla', sans-serif;
 
-        border: ${borderColor} ${borderWidth}px solid;
+        border: white ${borderWidth}px solid;
         border-radius: ${borderRadius}px;
         box-sizing: border-box;
-        background: ${options.background ? options.background : 'none'};
+        background: ${options.background ? options.background : 'white'};
 
         height: ${height}px;
         min-width: ${fontSize * 9.6}px;
@@ -237,11 +237,10 @@ const generateCSS = (options, fontSize=18)=> {
     */
 
     .${cssPrefix}-title {
-        color: ${options.color};
+        color: indigo;
         position: relative;
         font-size: ${fontSize}px;
-        padding-left: ${height * 1.05}px;
-        padding-right: ${(borderRadius - 10 < 5) ? height / 3 : borderRadius - 10}px;
+     
         transition: color 0.5s;
     }
 
@@ -501,15 +500,15 @@ export class WebXRButton {
   __updateButtonState() {
     if (this.session) {
       this.setTitle(this.options.textExitXRTitle);
-      this.setTooltip('Exit XR presentation');
+      this.setTooltip('Exit AR presentation');
       this.__setDisabledAttribute(false);
     } else if (this._enabled) {
       this.setTitle(this.options.textEnterXRTitle);
-      this.setTooltip('Enter XR');
+      this.setTooltip('Enter AR');
       this.__setDisabledAttribute(false);
     } else {
       this.setTitle(this.options.textXRNotFoundTitle);
-      this.setTooltip('No XR headset found.');
+      this.setTooltip('No AR headset found.');
       this.__setDisabledAttribute(true);
     }
   }
