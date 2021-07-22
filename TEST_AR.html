@@ -13,9 +13,9 @@
     <title>Trane Test</title>
   </head>
   <body>
-    <header>
+    <header style="background-color: indigo; width: 100%; position: absolute; top: 50%; max-width: 100%; ">
     
-        <summary>TRANE AR TEST</summary>
+        <div style="color: white; display:table; margin: 0 auto;"><b>TRANE AR TEST</b></div>
      
     </header>
     <script type="module">
@@ -44,9 +44,9 @@
       arObject.visible = false;
       scene.addNode(arObject);
 
-     // let flower = new Gltf2Node({url: 'media/gltf/sunflower/sunflower.gltf'});
-      let flower = new Gltf2Node({url: 'media/gltf/TDXU/TDxu20.gltf'});
-      arObject.addNode(flower);
+
+      let EQTRANE = new Gltf2Node({url: 'media/gltf/TDXU/TDxu20.gltf'});
+      arObject.addNode(EQTRANE);
 
       let reticle = new Gltf2Node({url: 'media/gltf/reticle/reticle.gltf'});
       reticle.visible = false;
@@ -55,11 +55,11 @@
       // Having a really simple drop shadow underneath an object helps ground
       // it in the world without adding much complexity.
       let shadow = new DropShadowNode();
-      vec3.set(shadow.scale, 0.55, 0.55, 0.55);
+      vec3.set(shadow.scale, 0.45, 0.45, 0.45);
       arObject.addNode(shadow);
 
-      const MAX_FLOWERS = 1;
-      let flowers = [];
+      const MAX_EQTRANES = 1;
+      let EQTRANEs = [];
 
       // Ensure the background is transparent for AR.
       scene.clear = false;
@@ -68,7 +68,7 @@
         xrButton = new WebXRButton({
           onRequestSession: onRequestSession,
           onEndSession: onEndSession,
-          textEnterXRTitle: "EXPLORER EQUIPMENT",
+          textEnterXRTitle: "START AR",
           textXRNotFoundTitle: "AR NOT FOUND",
           textExitXRTitle: "EXIT  AR",
         });
@@ -137,19 +137,19 @@
       // Adds a new object to the scene at the
       // specified transform.
       function addARObjectAt(matrix) {
-        let newFlower = arObject.clone();
-        newFlower.visible = true;
-        newFlower.matrix = matrix;
-        scene.addNode(newFlower);
+        let newEQTRANE = arObject.clone();
+        newEQTRANE.visible = true;
+        newEQTRANE.matrix = matrix;
+        scene.addNode(newEQTRANE);
 
-        flowers.push(newFlower);
+        EQTRANEs.push(newEQTRANE);
 
         // For performance reasons if we add too many objects start
         // removing the oldest ones to keep the scene complexity
         // from growing too much.
-        if (flowers.length > MAX_FLOWERS) {
-          let oldFlower = flowers.shift();
-          scene.removeNode(oldFlower);
+        if (EQTRANEs.length > MAX_EQTRANES) {
+          let oldEQTRANE = EQTRANEs.shift();
+          scene.removeNode(oldEQTRANE);
         }
       }
 
