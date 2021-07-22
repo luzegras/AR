@@ -93,23 +93,23 @@
     ],
     "materials" : [
         {
-            "doubleSided" : true,
+          
             "name" : "wire_000000000",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 0
                 },
-                "roughnessFactor" : 0.858578622341156
+                "roughnessFactor" : 1
             }
         },
         {
-            "doubleSided" : true,
+            
             "name" : "TDXP_Caja.001",
             "pbrMetallicRoughness" : {
                 "baseColorTexture" : {
                     "index" : 1
                 },
-                "roughnessFactor" : 0.858578622341156
+                "roughnessFactor" : 1
             }
         }
     ],
